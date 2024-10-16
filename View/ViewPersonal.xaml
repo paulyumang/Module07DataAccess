@@ -35,6 +35,9 @@
             Text="{Binding StatusMessage}"
             FontSize="18"
             HorizontalOptions="Center" />
+
+        <Label
+            Text="Hello"/>
     </VerticalStackLayout>
 </ContentPage>
 
