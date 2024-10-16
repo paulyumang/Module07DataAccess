@@ -16,17 +16,6 @@ namespace Module07DataAccess
             _dbConnectionService = new DatabaseConnectionServices();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
-
         private async void OnTestConnectionClicked(object sender, EventArgs e)
         {
             var connectionString = _dbConnectionService.GetConnectionString();
@@ -48,9 +37,9 @@ namespace Module07DataAccess
             }
         }
 
-        private async void OpenViewPersonal(object sender, EventArgs e)
+        private async void OpenViewEmployee(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//ViewPersonal");
+            await Shell.Current.GoToAsync("//ViewEmployee");
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Module07DataAccess.Model;
@@ -7,42 +9,41 @@ using System.Data;
 
 namespace Module07DataAccess.Services
 {
-    public class PersonalService
+    public class EmployeeService
     {
         private readonly string _connectionString;
 
-        public PersonalService()
+        public EmployeeService()
         {
             var dbService = new DatabaseConnectionServices();
             _connectionString = dbService.GetConnectionString();
         }
 
-
-        //Retrieves all data
-        public async Task<List<Personal>> GetAllPersonalsAsync()
+        public async Task<List<Employee>> GetAllEmployeesAsync()
         {
-            var personalService = new List<Personal>();
+            var employeeService = new List<Employee>();
 
             // Correct instantiation of MySqlConnection
             using (var conn = new MySqlConnection(_connectionString))
             {
                 await conn.OpenAsync();
-                var cmd = new MySqlCommand("SELECT * FROM tblpersonal", conn);
+                var cmd = new MySqlCommand("SELECT * FROM tblemployee", conn);
 
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
                     while (await reader.ReadAsync())
                     {
-                        personalService.Add(new Personal
+                        employeeService.Add(new Employee
                         {
-                            ID = reader.GetInt32("ID"),
+                            EmployeeID = reader.GetInt32("EmployeeID"),
                             Name = reader.GetString("Name"),
-                            Gender = reader.GetString("Gender"),
+                            Address = reader.GetString("Address"),
+                            email = reader.GetString("email"),
                             ContactNo = reader.GetString("ContactNo"),
                         });
                     }
                 }
-                return personalService;
+                return employeeService;
             }
         }
     }

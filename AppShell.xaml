@@ -16,8 +16,8 @@
 
     <ShellContent
         Title="View Personal"
-        ContentTemplate="{DataTemplate views:ViewPersonal}"  
-        Route="ViewPersonal" 
+        ContentTemplate="{DataTemplate views:ViewEmployee}"  
+        Route="ViewEmployee" 
         />
     <Shell.Resources>
         <LinearGradientBrush x:Key="GradientBrush" StartPoint="0,0" EndPoint="1,1">
