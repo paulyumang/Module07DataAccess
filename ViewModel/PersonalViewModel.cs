@@ -102,7 +102,6 @@ namespace Module07DataAccess.ViewModel
             }
         }
     }
-
     public class PersonalViewModel : INotifyPropertyChanged
     {
         private readonly PersonalService _personalService;
